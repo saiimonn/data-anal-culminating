@@ -1,0 +1,71 @@
+---
+title: "Culminating Activity"
+author: "Calunod, Carumba, Gementiza, Mingo, Yu"
+output:
+  pdf_document: default
+date: "2026-05-03"
+---
+
+# Chapter 1
+
+## Background of the Study
+
+Artificial Intelligence (AI) has grown substantially in recent years, becoming increasingly capable of performing tasks across various professional fields. As organizations adopt AI-driven technologies, concerns about job displacement, automation risk, and shifting salary patterns have become central topics in both academic research and workforce planning.  
+
+The dataset captures these key variables across a projected time span of two decades. It is designed to reflect realistic relationships; for example, increasing AI adoption is often associated with higher productivity. The inclusion of future projections allows for predictive analysis, enabling researchers and students to explore possible scenarios in the evolving job market. This aligns with ongoing research efforts that analyze how AI affects employment structures, wage distribution, and the demand for reskilling initiatives.  
+
+This study utilizes the **AI Job Risk and Salary Dataset (2015–2035)** to investigate the relationship between AI adoption, job risk levels, and salary trends. The findings aim to contribute to a deeper understanding of workforce transformation and provide data-driven insights that can guide career planning in an AI-driven world.
+
+
+## Statement of the Problem
+
+The rapid integration of Artificial Intelligence into various industries has significantly transformed job structures, skill requirements, and salary distributions. While AI creates new opportunities, it also introduces risks of automation and job displacement, particularly for roles involving routine and repetitive tasks. Despite these developments, there remains a lack of clear understanding of how job risk and salary levels evolve over time in relation to AI adoption.  
+
+
+This study aims to analyze the **AI Job Risk and Salary Dataset (2015–2035)** to better understand these trends. Specifically, it seeks to answer the following questions:
+
+
+1. What are the trends in salary changes across different job roles from 2015 to 2035?  
+2. How does the level of AI-related job risk vary among different occupations?  
+3. Is there a significant relationship between job risk and salary levels?  
+4. How does the demand for AI-related skills influence salary growth and job security?  
+5. Which job categories are most vulnerable to automation, and which are more resilient over time?  
+
+
+By addressing these questions, the study aims to provide insights into how AI is reshaping the workforce and to identify patterns that can guide future career decisions.
+
+
+## Objectives of the Study
+
+### General Objective
+- To investigate the impact of AI automation risk on global job salaries.
+
+### Specific Objectives
+- To determine the statistical relationship between AI risk scores and salary levels.  
+- To analyze the predictive power of AI risk and skill demand on job compensation.  
+
+
+## Hypotheses
+
+- **H0 (Null Hypothesis):** There is no significant relationship between AI adoption and job outcomes.  
+- **H1 (Alternative Hypothesis):** There is a significant relationship between AI adoption and job outcomes.  
+
+
+## Significance of the Study
+
+The findings of this study can benefit students and job seekers by helping them identify in-demand and future-proof skills, enabling them to make informed decisions about their education and career paths. It also supports professionals and employees by providing insights into the potential risks of job automation and encouraging them to upskill or reskill to remain competitive in an AI-driven work environment.  
+
+
+## Scope and Limitations
+
+This study covers both historical and projected data from 2015 to 2035, aiming to identify patterns in how AI adoption influences employment opportunities, required skills, and compensation levels. It primarily relies on quantitative data to generate insights, including relationships between job roles, emerging skills, and salary growth, as well as the potential risks of automation across different sectors.  
+
+However, the study is subject to several limitations. It depends solely on the variables available in the dataset, which may not fully capture all real-world factors affecting employment, such as economic fluctuations, government policies, or cultural influences. The projected data extending to 2035 is based on predictive models and assumptions, meaning actual future outcomes may differ. Additionally, the study does not incorporate qualitative perspectives, such as individual experiences or company-specific strategies, which could provide deeper context.
+
+
+# Chapter 2
+
+
+# Chapter 3
+
+
