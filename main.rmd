@@ -1,71 +1,119 @@
 ---
 title: "Culminating Activity"
 author: "Calunod, Carumba, Gementiza, Mingo, Yu"
-output:
-  pdf_document: default
 date: "2026-05-03"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
 ---
 
 # Chapter 1
 
 ## Background of the Study
 
-Artificial Intelligence (AI) has grown substantially in recent years, becoming increasingly capable of performing tasks across various professional fields. As organizations adopt AI-driven technologies, concerns about job displacement, automation risk, and shifting salary patterns have become central topics in both academic research and workforce planning.  
+Artificial Intelligence has been growing substantially the past few years and it has been getting more capable for a lot of tasks in many professional areas. As organizations increasingly adopt AI-driven technologies, the concern about job displacement, automation risk, and shifting salary patterns have become central topics in both academic research and workforce planning. 
 
-The dataset captures these key variables across a projected time span of two decades. It is designed to reflect realistic relationships; for example, increasing AI adoption is often associated with higher productivity. The inclusion of future projections allows for predictive analysis, enabling researchers and students to explore possible scenarios in the evolving job market. This aligns with ongoing research efforts that analyze how AI affects employment structures, wage distribution, and the demand for reskilling initiatives.  
+The dataset captures these key variables across a projected time span of two decades. These datasets are made to reflect realistic relationships, for example, increasing AI adoption is often associated with higher productivity. The inclusion of future projections allows for predictive analysis, enabling researchers and students to explore possible scenarios in the evolving job market. This aligns with research efforts that aim to analyze how AI affects employment structures, wage distribution, and the demand for reskilling initiatives.
 
-This study utilizes the **AI Job Risk and Salary Dataset (2015–2035)** to investigate the relationship between AI adoption, job risk levels, and salary trends. The findings aim to contribute to a deeper understanding of workforce transformation and provide data-driven insights that can guide career planning in an AI-driven world.
-
+This study utilizes the AI Job Risk and Salary Dataset (2015-2035) to investigate the relationship between AI adoption, job risks levels, and salary trends. The findings of this study aim to contribute to a deeper understanding of workforce transformation and to provide data-driven insights that can guide career planning in an AI-driven world.
 
 ## Statement of the Problem
 
-The rapid integration of Artificial Intelligence into various industries has significantly transformed job structures, skill requirements, and salary distributions. While AI creates new opportunities, it also introduces risks of automation and job displacement, particularly for roles involving routine and repetitive tasks. Despite these developments, there remains a lack of clear understanding of how job risk and salary levels evolve over time in relation to AI adoption.  
+The rapid integration of AI into various industries has transformed job structures and skill requirements. While AI creates new opportunities, it introduces a pressing need to accurately identify which roles face the highest risk of automation based on underlying labor market metrics. Specifically, it seeks to answer the following questions:
 
-
-This study aims to analyze the **AI Job Risk and Salary Dataset (2015–2035)** to better understand these trends. Specifically, it seeks to answer the following questions:
-
-
-1. What are the trends in salary changes across different job roles from 2015 to 2035?  
-2. How does the level of AI-related job risk vary among different occupations?  
-3. Is there a significant relationship between job risk and salary levels?  
-4. How does the demand for AI-related skills influence salary growth and job security?  
-5. Which job categories are most vulnerable to automation, and which are more resilient over time?  
-
-
-By addressing these questions, the study aims to provide insights into how AI is reshaping the workforce and to identify patterns that can guide future career decisions.
-
+1. What are the baseline characteristics of the dataset in terms of salary, skill demand scores, and job openings?
+2. How are global occupations distributed across the High, Medium, and Low AI Risk categories?
+3. How effectively can job roles be classified into distinct AI risk categories based on their numeric market factors?
+4. What is the predictive accuracy of the kNN algorithm in determining the automation risk of a given occupation?
 
 ## Objectives of the Study
 
 ### General Objective
-- To investigate the impact of AI automation risk on global job salaries.
+* To predict and classify the artificial intelligence automation risk of global job roles using machine learning techniques.
 
 ### Specific Objectives
-- To determine the statistical relationship between AI risk scores and salary levels.  
-- To analyze the predictive power of AI risk and skill demand on job compensation.  
-
+* To describe the distribution of salaries, skill demand scores, and job openings across different global job roles.
+* To evaluate the accuracy and predictive performance of the classification model.
 
 ## Hypotheses
 
-- **H0 (Null Hypothesis):** There is no significant relationship between AI adoption and job outcomes.  
-- **H1 (Alternative Hypothesis):** There is a significant relationship between AI adoption and job outcomes.  
-
+* **H0 (Null Hypothesis):** The classification model cannot accurately predict the AI Risk Category of job roles based on salary, skill demand, and job openings at a rate better than random chance.
+* **H1 (Alternative Hypothesis):** The classification model can accurately predict the AI Risk Category of job roles based on salary, skill demand, and job openings.
 
 ## Significance of the Study
 
-The findings of this study can benefit students and job seekers by helping them identify in-demand and future-proof skills, enabling them to make informed decisions about their education and career paths. It also supports professionals and employees by providing insights into the potential risks of job automation and encouraging them to upskill or reskill to remain competitive in an AI-driven work environment.  
+The following groups can benefit from the results of this research:
 
+**Students and Job Seekers.** Individuals entering the workforce stand to benefit from a data-driven understanding of highly demanded, future-proof skills. The insights from this study can serve as a strategic guide, allowing them to make informed decisions regarding their educational pursuits, skill acquisition, and long-term career trajectories in an evolving labor market.
+
+**Professionals and Employees.** Current members of the workforce can utilize the findings to accurately assess the automation risks associated with their specific roles. By understanding their job's vulnerability to AI, professionals are empowered to proactively upskill or reskill, ensuring they remain relevant, adaptable, and competitive in a technology-driven work environment. 
+
+**Academic Institutions and Training Providers.** Educators, curriculum developers, and vocational trainers can utilize the findings to identify which technical skills are currently commanding high market demand and which roles are most susceptible to automation. This enables them to strategically adapt their curricula and advising programs, ensuring that learners are equipped with resilient competencies that align with actual industry needs. 
+
+**Employers and Human Resource Professionals.** Organizations and recruiters can leverage the study's insights into skill demand and AI risk to forecast future workforce needs. This allows them to optimize talent acquisition strategies, design effective corporate training and reskilling programs, and better manage the organizational transition toward AI-integrated operations. 
+
+**Future Researchers.** This study contributes to the growing body of literature concerning the intersection of artificial intelligence, labor economics, and predictive career analytics. As such, it can serve as a foundational reference for future investigations involving broader global datasets, different economic sectors, or more advanced machine learning modeling techniques. 
 
 ## Scope and Limitations
 
-This study covers both historical and projected data from 2015 to 2035, aiming to identify patterns in how AI adoption influences employment opportunities, required skills, and compensation levels. It primarily relies on quantitative data to generate insights, including relationships between job roles, emerging skills, and salary growth, as well as the potential risks of automation across different sectors.  
+The study covers both historical and projected data from 2015 to 2035, aiming to identify patterns in how AI adoption influences employment opportunities, required skills, and compensation levels. The study primarily relies on quantitative data to generate insights, including relationships between job roles, emerging skills, and salary growth, as well as the potential risks of automation in different sectors.
 
-However, the study is subject to several limitations. It depends solely on the variables available in the dataset, which may not fully capture all real-world factors affecting employment, such as economic fluctuations, government policies, or cultural influences. The projected data extending to 2035 is based on predictive models and assumptions, meaning actual future outcomes may differ. Additionally, the study does not incorporate qualitative perspectives, such as individual experiences or company-specific strategies, which could provide deeper context.
-
+However, the study is subject to several limitations. It depends solely on the variables available in the dataset, which may not fully capture all real-world factors affecting employment, such as economic fluctuations, government policies, or cultural influences. The projected data extending to 2035 is based on predictive models and assumptions, meaning actual future outcomes may differ. The study, additionally, does not incorporate qualitative perspectives, such as individual experiences or company-specific strategies, which could not provide deeper context.
 
 # Chapter 2
 
+## Related Studies
+
+The dataset that the researchers chose explores the most relevant question that concerns the tech industry in today's age: Will AI replace tech jobs in the near future? Hananto et al. (2025), in their systematic literature review of 18 peer-reviewed articles, investigated the dual impact of generative AI tools — particularly ChatGPT and GitHub Copilot — on programming careers. Their findings confirm that while AI automates routine tasks such as code generation, debugging, and unit testing (threatening entry-level roles), it simultaneously creates demand for higher-order competencies in AI integration, system design, and ethical governance. Notably, they cite evidence that AI pair-programming reduces task-completion time by over 55%, and that tools like GitHub Copilot solve roughly half of programming problems on the first attempt. The study concludes that generative AI should be viewed as a catalyst that redefines — rather than replaces – the human developer's role. In this sense, AI will definitely change the roles of tech jobs; this does not mean that it will take over those jobs. It only means that with the tools at hand, requirements get more complicated; therefore, the expectation for these jobs becomes higher.
+
+Complementing this qualitative evidence, the Future of Jobs AI Dataset (spanning 12,343 records across 10 job titles, 6 countries, and the period 2015–2035) – which, as aforementioned, was chosen by the researchers provides quantitative insight into how AI risk is distributed across the tech labor market. The dataset tracks variables including AI risk scores, skill demand scores, job survival classifications, and job openings. Analysis of this dataset reveals that Business Analysts carry the highest average AI risk score (0.75), followed by Data Analysts (0.65), while AI Researchers (0.15) and Cybersecurity Analysts (0.25) face the lowest risk. Interestingly, skill demand scores remain relatively stable across all roles (ranging from approximately 78.9 to 79.9 out of 100), suggesting that while AI displaces certain functions, it does not eliminate the overall demand for skilled human workers. Furthermore, the survival class distribution shows that roles like AI Researcher and ML Engineer are overwhelmingly classified as high-survival, while Business Analyst and Data Analyst skew toward lower survival — patterns that closely align with the risk scores reported in the qualitative literature.
+
+## Related Literature
+
+The tech economy can be regarded as a knowledge-based economy where human resources are valued as assets in both creative and technological domains. Thus, human resources are deemed as invaluable asset capital. According to Wuttahapan (2017), Human Capital Theory explains this phenomenon through an economic lens, asserting that investments in human capital–such as education, training, and accumulated experience–yield competitive advantage and sustainability for both individuals and organizations in a complex business world. As of now, human capital still remains the primary driver of organizational success, but the advancement of Artificial Intelligence introduces a new dynamic: the risk of technological automation or displacement. The valuation of human capital is no longer static; it is highly susceptible to technological disruption. As AI models become increasingly proficient in human tasks that require cognitive skills (such as basic programming, data analysis, or technical writing), the “AI Risk” associated with specific tech roles fluctuates. One’s vulnerability to AI displacement is intrinsically tied to one's specific human capital profile. For example, jobs that are heavily reliant on routine coding tasks may exhibit higher AI risk compared to jobs requiring complex, strategic decision-making.
 
 # Chapter 3
 
+## Research Design
 
+This study employs a quantitative, descriptive-predictive research design. The descriptive component involves the summarization and characterization of the “Future of Jobs AI Dataset” detailing the distribution of global labor market attributes such as financial compensation, job availability, and primary skill demand scores. The predictive component utilizes a supervised machine learning classification approach. Specifically, a k-Nearest Neighbors (kNN) algorithm is applied to develop a model capable of predicting the categorical artificial intelligence risk level of an occupation (Low Risk, Medium Risk, or High Risk) based on its underlying numerical market variables.
+
+## Data Collection
+
+This research utilizes secondary data sourced from Kaggle, a public repository for data science assets. The analysis is based exclusively on the “Future of Jobs AI Dataset”, which compiles comprehensive global employment metrics. In total, the dataset consists of 12,343 individual job entries characterized by 13 distinct variables related to career attributes, financial compensation, and automation vulnerability.
+
+Since this study relies entirely on an existing dataset, no primary data gathering procedures such as surveys or interviews were necessary. Upon acquiring the comma-separated values (CSV) file, an initial data integrity check was conducted, confirming the absence of any missing or null values. To optimize the data for the kNN classification algorithm, several preprocessing steps were taken. Qualitative and descriptive attributes namely Job Title, Country, Year, and Primary Skill were removed from the predictive feature set. Furthermore, the continuous numerical “AI Risk Score” was excluded to prevent data leakage, ensuring the algorithm predicts the final categorical risk level based purely on objective market factors rather than direct risk calculations.
+
+Usage of publicly available datasets is a standard methodological approach in predictive analytics. By utilizing open-source data, this study maintains a high degree of transparency, allowing future researchers to easily access the same files to replicate or verify the resulting models. Finally, ethical and privacy concerns are inherently minimized; the dataset provides generalized, macroeconomic market trends rather than sensitive, personally identifiable human information.
+
+```{r}
+data <- read.csv("dataset.csv")
+head(data)
+```
+
+## Variables Description
+
+To understand how artificial intelligence might affect different jobs, this study focuses on specific variables from the dataset. We selected three main job characteristics to help predict a job’s overall risk of being automated.
+
+### Dependent Variable
+
+**AI Risk Category:** This is the main outcome we are trying to predict. Every job in the given dataset is grouped into one of three levels: Low Risk, Medium Risk, or High Risk. The goal of our computer model is to correctly guess which category a job belongs to based on its market factors.
+
+### Independent Variables
+
+We used the following three numeric factors to see if they can accurately predict a job’s AI risk level:
+
+* **Salary:** The yearly pay for the role. We included this to test if compensation is connected to automation risk. For example, to see if lower-paying jobs are more vulnerable than high-paying ones.
+* **Skill Demand Score:** A number showing how much employers currently need the specific skills required for the job. This helps us see if having a highly desired skill protects a worker from being replaced by AI.
+* **Job openings:** The total number of available positions for that role. This simply shows how common or widely available the job is across the overall job market.
+
+## Data Analysis Techniques
+
+### Descriptive Statistics
+Descriptive statistics will be utilized to summarize the baseline characteristics of the scaled dataset prior to modeling. For the continuous predictor variables, measures of central tendency (mean and median) and dispersion (standard deviation and range) will be calculated to understand the data’s underlying distribution.
+
+### Machine Learning (K-Nearest Neighbors Classification)
+To predict an occupation’s vulnerability to automation, a supervised K-Nearest Neighbors (KNN) classification model will be deployed, designating `ai_risk_category` as the target dependent variable. The scaled dataset will be partitioned into two subsets: an 80% training set used to formulate the model’s pattern recognition, and a 20% testing set reserved strictly for out-of-sample validation.
+
+The algorithmic hyperparameter for the optimal number of k-neighbors will be dynamically assigned based on the square root of the training dataset’s size. Finally, the model’s predictive performance and validity will be evaluated by constructing a confusion matrix to analyze class-specific predictive distributions, alongside the computation of the overall classification accuracy percentage.
