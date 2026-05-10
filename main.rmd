@@ -117,3 +117,116 @@ Descriptive statistics will be utilized to summarize the baseline characteristic
 To predict an occupation’s vulnerability to automation, a supervised K-Nearest Neighbors (KNN) classification model will be deployed, designating `ai_risk_category` as the target dependent variable. The scaled dataset will be partitioned into two subsets: an 80% training set used to formulate the model’s pattern recognition, and a 20% testing set reserved strictly for out-of-sample validation.
 
 The algorithmic hyperparameter for the optimal number of k-neighbors will be dynamically assigned based on the square root of the training dataset’s size. Finally, the model’s predictive performance and validity will be evaluated by constructing a confusion matrix to analyze class-specific predictive distributions, alongside the computation of the overall classification accuracy percentage.
+
+
+# Chapter 4
+
+## Results and Discussion
+
+```{r}
+# Libraries
+library(class)
+library(dplyr)
+library(ggplot2)
+
+# Load data
+data <- read.csv("dataset.csv")
+
+# Clean data
+data_clean <- data %>%
+  select(-salary_bucket, -ai_risk_score, -primary_skill) %>%
+  na.omit()
+
+data_clean$ai_risk_category <- as.factor(data_clean$ai_risk_category)
+
+# One-hot encoding
+predictors <- model.matrix(~ . - ai_risk_category - 1, data = data_clean)
+target <- data_clean$ai_risk_category
+
+# Scaling
+predictors_scaled <- scale(predictors)
+
+# PCA (original)
+pca_orig <- prcomp(predictors, center = TRUE, scale. = FALSE)
+
+orig_df <- data.frame(
+  PC1 = pca_orig$x[,1],
+  PC2 = pca_orig$x[,2],
+  Class = target
+)
+
+ggplot(orig_df, aes(PC1, PC2, color = Class)) +
+  geom_point(alpha = 0.7) +
+  ggtitle("Original Data (PCA)") +
+  theme_minimal()
+
+# PCA (scaled)
+pca_scaled <- prcomp(predictors_scaled)
+
+scaled_df <- data.frame(
+  PC1 = pca_scaled$x[,1],
+  PC2 = pca_scaled$x[,2],
+  Class = target
+)
+
+ggplot(scaled_df, aes(PC1, PC2, color = Class)) +
+  geom_point(alpha = 0.7) +
+  ggtitle("Scaled Data (PCA)") +
+  theme_minimal()
+
+# Train-test split
+set.seed(15)
+
+train_index <- sample(1:nrow(predictors_scaled), 0.8 * nrow(predictors_scaled))
+
+train_x <- predictors_scaled[train_index, ]
+test_x  <- predictors_scaled[-train_index, ]
+
+train_y <- target[train_index]
+test_y  <- target[-train_index]
+
+# k selection (sqrt rule, odd)
+k_value <- round(sqrt(nrow(train_x)))
+if (k_value %% 2 == 0) {
+  k_value <- k_value + 1
+}
+print(paste("Final k:", k_value))
+
+# kNN model
+knn_predictions <- knn(train = train_x, test = test_x, cl = train_y, k = k_value)
+
+# Evaluation
+table(Predicted = knn_predictions, Actual = test_y)
+
+accuracy <- mean(knn_predictions == test_y)
+print(paste("Accuracy:", round(accuracy * 100, 2), "%"))
+
+# kNN visualization (PCA space)
+full_knn <- knn(train = train_x, test = predictors_scaled, cl = train_y, k = k_value)
+
+knn_df <- data.frame(
+  PC1 = pca_scaled$x[,1],
+  PC2 = pca_scaled$x[,2],
+  Predicted = full_knn
+)
+
+ggplot(knn_df, aes(PC1, PC2, color = Predicted)) +
+  geom_point(alpha = 0.7) +
+  ggtitle("kNN Classification (Predicted)") +
+  theme_minimal()
+
+# Ensure the caret library is loaded
+if(!require(caret)) install.packages("caret")
+library(caret)
+
+# Generate the full confusion matrix and statistics
+# We use 'mode = everything' to ensure F1 and other metrics are calculated
+cM <- confusionMatrix(knn_predictions, test_y, mode = "everything")
+
+# Display the overall accuracy and global statistics
+print(cM$overall)
+
+# Display class-specific metrics (Sensitivity, Specificity, F1, etc.)
+print(cM$byClass)
+```
+
