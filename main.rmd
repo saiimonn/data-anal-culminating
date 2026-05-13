@@ -3,9 +3,9 @@ title: "Culminating Activity"
 author: "Calunod, Carumba, Gementiza, Mingo, Yu"
 date: "2026-05-03"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
 ---
 
 # Chapter 1
@@ -38,8 +38,8 @@ The rapid integration of AI into various industries has transformed job structur
 
 ## Hypotheses
 
-* **H0 (Null Hypothesis):** The classification model cannot accurately predict the AI Risk Category of job roles based on salary, skill demand, and job openings at a rate better than random chance.
-* **H1 (Alternative Hypothesis):** The classification model can accurately predict the AI Risk Category of job roles based on salary, skill demand, and job openings.
+* **H0 (Null Hypothesis):** The classification model cannot accurately predict the AI Risk Category of job roles based on salary, skill demand score, job openings, experience level, and education level at a rate better than random chance.
+* **H1 (Alternative Hypothesis):** The classification model can accurately predict the AI Risk Category of job roles based on salary, skill demand score, job openings, experience level, and education level.
 
 ## Significance of the Study
 
@@ -61,6 +61,8 @@ The study covers both historical and projected data from 2015 to 2035, aiming to
 
 However, the study is subject to several limitations. It depends solely on the variables available in the dataset, which may not fully capture all real-world factors affecting employment, such as economic fluctuations, government policies, or cultural influences. The projected data extending to 2035 is based on predictive models and assumptions, meaning actual future outcomes may differ. The study, additionally, does not incorporate qualitative perspectives, such as individual experiences or company-specific strategies, which could not provide deeper context.
 
+---
+
 # Chapter 2
 
 ## Related Studies
@@ -72,6 +74,8 @@ Complementing this qualitative evidence, the Future of Jobs AI Dataset (spanning
 ## Related Literature
 
 The tech economy can be regarded as a knowledge-based economy where human resources are valued as assets in both creative and technological domains. Thus, human resources are deemed as invaluable asset capital. According to Wuttahapan (2017), Human Capital Theory explains this phenomenon through an economic lens, asserting that investments in human capital–such as education, training, and accumulated experience–yield competitive advantage and sustainability for both individuals and organizations in a complex business world. As of now, human capital still remains the primary driver of organizational success, but the advancement of Artificial Intelligence introduces a new dynamic: the risk of technological automation or displacement. The valuation of human capital is no longer static; it is highly susceptible to technological disruption. As AI models become increasingly proficient in human tasks that require cognitive skills (such as basic programming, data analysis, or technical writing), the “AI Risk” associated with specific tech roles fluctuates. One’s vulnerability to AI displacement is intrinsically tied to one's specific human capital profile. For example, jobs that are heavily reliant on routine coding tasks may exhibit higher AI risk compared to jobs requiring complex, strategic decision-making.
+
+---
 
 # Chapter 3
 
@@ -85,12 +89,7 @@ This research utilizes secondary data sourced from Kaggle, a public repository f
 
 Since this study relies entirely on an existing dataset, no primary data gathering procedures such as surveys or interviews were necessary. Upon acquiring the comma-separated values (CSV) file, an initial data integrity check was conducted, confirming the absence of any missing or null values. To optimize the data for the kNN classification algorithm, several preprocessing steps were taken. Qualitative and descriptive attributes namely Job Title, Country, Year, and Primary Skill were removed from the predictive feature set. Furthermore, the continuous numerical “AI Risk Score” was excluded to prevent data leakage, ensuring the algorithm predicts the final categorical risk level based purely on objective market factors rather than direct risk calculations.
 
-Usage of publicly available datasets is a standard methodological approach in predictive analytics. By utilizing open-source data, this study maintains a high degree of transparency, allowing future researchers to easily access the same files to replicate or verify the resulting models. Finally, ethical and privacy concerns are inherently minimized; the dataset provides generalized, macroeconomic market trends rather than sensitive, personally identifiable human information.
-
-```{r}
-data <- read.csv("dataset.csv")
-head(data)
-```
+Usage of publicly available datasets is a standard methodological approach in predictive analytics. By utilizing open-source data, this study maintains a high degree of transparency, allowing future researchers to easily access the same files to replicate or verify the resulting models. Finally, ethical and privacy concerns are inherently minimized; the dataset provides generalized, macroeconomic market trends rather than sensitive, personally identifiable human information. 
 
 ## Variables Description
 
@@ -104,24 +103,53 @@ To understand how artificial intelligence might affect different jobs, this stud
 
 We used the following three numeric factors to see if they can accurately predict a job’s AI risk level:
 
-* **Salary:** The yearly pay for the role. We included this to test if compensation is connected to automation risk. For example, to see if lower-paying jobs are more vulnerable than high-paying ones.
-* **Skill Demand Score:** A number showing how much employers currently need the specific skills required for the job. This helps us see if having a highly desired skill protects a worker from being replaced by AI.
-* **Job openings:** The total number of available positions for that role. This simply shows how common or widely available the job is across the overall job market.
+* **Numeric Market Factors:** Variables such as Salary, Skill Demand Score, and Job Openings were used to measure the financial compensation and overall market demand for the role.
+* **Professional Characteristics:** Variables such as Experience Level and Education Level were included to test if higher academic requirements or seniority serve as protective barriers against automation.
+
+### Excluded Variables
+
+To ensure the validity of the study and prevent data leakage (where the algorithm inadvertently receives the "answer" before it learns), three specific variables were deliberately removed from the analysis:
+
+* **AI Risk Score:** Removed because it is a direct numerical translation of the target outcome.
+* **Salary Bucket:** Removed because it is repetitive information already covered by the specific Salary variable.
+* **Primary Skill:** Excluded to streamline the model and prevent the algorithm from becoming overly focused on text-heavy descriptions.
 
 ## Data Analysis Techniques
 
-### Descriptive Statistics
-Descriptive statistics will be utilized to summarize the baseline characteristics of the scaled dataset prior to modeling. For the continuous predictor variables, measures of central tendency (mean and median) and dispersion (standard deviation and range) will be calculated to understand the data’s underlying distribution.
+### Descriptive Statistics and Feature Engineering
+
+Descriptive statistics will be utilized to summarize the baseline characteristics of the scaled dataset prior to modeling. For the continuous predictor variables, measures of central tendency (mean and median) and dispersion (standard deviation and range) will be calculated to understand the data’s underlying distribution. To prepare the dataset for algorithmic processing, critical feature engineering steps will be implemented. First, one-hot encoding will be applied to convert all categorical text variables into a numeric binary matrix. Subsequently, Z-score standardization (scaling) will be implemented across all predictor variables. This scaling ensures that features with inherently larger ranges, such as Salary or Job Openings, do not disproportionately dominate the algorithm’s distance calculations.
+
+Furthermore, because the market features are multi-dimensional, the researchers utilize Principal Component Analysis (PCA) for dimensionality reduction. This allows the high-dimensional, scaled feature space to be projected into two-dimensional visual clusters, enabling the identification of inherent structures and class overlap prior to classification.
 
 ### Machine Learning (K-Nearest Neighbors Classification)
+
 To predict an occupation’s vulnerability to automation, a supervised K-Nearest Neighbors (KNN) classification model will be deployed, designating `ai_risk_category` as the target dependent variable. The scaled dataset will be partitioned into two subsets: an 80% training set used to formulate the model’s pattern recognition, and a 20% testing set reserved strictly for out-of-sample validation.
 
-The algorithmic hyperparameter for the optimal number of k-neighbors will be dynamically assigned based on the square root of the training dataset’s size. Finally, the model’s predictive performance and validity will be evaluated by constructing a confusion matrix to analyze class-specific predictive distributions, alongside the computation of the overall classification accuracy percentage.
+The algorithmic hyperparameter for the optimal number of k-neighbors will be dynamically assigned based on the square root of the training dataset’s size (k = $\sqrt{n}$).
+
+### Model Validation and Performance Metrics
+
+The model’s predictive validity will be evaluated using a multiclass confusion matrix. Moreover, The overall classification accuracy percentage and performance will be decomposed into class-specific metrics:
+
+* **Sensitivity (Recall):** To measure the model's ability to identify all true instances of a risk category (critical for identifying "High Risk" roles).
+* **Precision (Positive Predictive Value):** To determine the reliability of a risk designation.
+* **F1-Score:** To provide a harmonic mean of precision and sensitivity, offering a balanced view of model performance across the unevenly distributed risk categories.
+* **Cohen’s Kappa:** To assess the agreement between predicted and actual categories while accounting for the possibility of agreement occurring by chance.
+
+---
 
 
 # Chapter 4
 
 ## Results and Discussion
+
+With the introduction of AI in the tech industry, certain job markets have been significantly affected, while others have not. The researchers are to test whether job-related factors can be used to determine the level of risk associated with that position. Given this, the researchers decided to use K-nearest Neighbors (KNN) to build a model that can classify the level of AI risk for a job using data such as salary, geographic location, etc. 
+
+**Results**
+
+The model achieved an accuracy of 86.84%, which is sufficient for our research. This indicates that the model correctly predicted the AI Risk Category for most of the test observations. The results also suggest that the selected market-related variables, including salary, skill demand score, and job openings, contain useful patterns for distinguishing among High Risk, Medium Risk, and Low Risk job categories.
+
 
 ```{r}
 # Libraries
