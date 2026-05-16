@@ -427,6 +427,8 @@ Hananto, A., Hasibuan, N. S., Olivia, S., Tukino, T., & Novalia, E. (2025). The 
 
 Wuttaphan, N. (2017, October 20). Human capital theory: The theory of human resource development, implications, and future.
 
+Steinbach, M., & Tan, P. (2009). kNN: k-Nearest Neighbors. In The Top Ten Algorithms in Data Mining (1st ed., pp. 165–176). https://doi.org/10.1201/9781420089653-15
+
 ## Appendices
 
 ### Appendix A: Code
